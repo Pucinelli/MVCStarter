@@ -1,0 +1,63 @@
+{
+	"name": "mvcstarter",
+	"displayName": "MVCStarter",
+	"description": "Start a MVC Project in your actual workspace",
+	"version": "1.1.0",
+	"publisher": "gabrielpucinelli",
+	"preview": true,
+	"icon": "icon.png",
+	"readme": "README.md",
+	"author": {
+		"name": "Gabriel Pucinelli"
+	},
+	"engines": {
+		"vscode": "^1.28.0"
+	},
+	"keywords": [
+		"MVC",
+		"Node",
+		"JavaScript",
+		"js"
+	],
+	"categories": [
+		"Programming Languages",
+		"Extension Packs",
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.startMvcProject"
+	],
+	"main": "./extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.startMvcProject",
+				"title": "Start MVC Project"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.startMvcProject",
+				"linux": "alt+m",
+				"win": "alt+m",
+				"mac": "meta+m"
+			}
+		]
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^2.6.1",
+		"vscode": "^1.1.6",
+		"eslint": "^4.11.0",
+		"@types/node": "^7.0.43",
+		"@types/mocha": "^2.2.42"
+	},
+	"__metadata": {
+		"id": "3ddcc31c-22bb-40cf-90fb-b0ae6d59e319",
+		"publisherId": "48b8bef9-2016-4b80-9a87-e7ce52bc4539",
+		"publisherDisplayName": "gabrielpucinelli"
+	}
+}
