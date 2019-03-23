@@ -1,12 +1,13 @@
 {
 	"name": "mvcstarter",
 	"displayName": "MVCStarter",
-	"description": "Start a MVC Project in your actual workspace",
-	"version": "1.2.0",
+	"description": "Start a MVC Project in your actual vscode workspace",
+	"version": "1.2.1",
 	"publisher": "gabrielpucinelli",
 	"preview": true,
 	"icon": "icon.png",
 	"readme": "README.md",
+	"repository": { "url": "https://github.com/Pucinelli/MVCStarter" },
 	"author": {
 		"name": "Gabriel Pucinelli"
 	},
