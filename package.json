@@ -2,7 +2,7 @@
 	"name": "mvcstarter",
 	"displayName": "MVCStarter",
 	"description": "Start a MVC Project in your actual workspace",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"publisher": "gabrielpucinelli",
 	"preview": true,
 	"icon": "icon.png",
