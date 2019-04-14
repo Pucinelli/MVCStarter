@@ -9,30 +9,30 @@ app.listen(3000, () => console.log('Connected on port 3000.'));`;
 
 const serverJs = 
 `const express = require('express');
-const consign = require('consign');\n
+const { join } = require('path');\n
 const app = express();\n
-consign()
-    .include('./app/routes')
-    .then('./app/controllers')
-    .into(app);\n
+app.use(express.urlencoded({ extended: false }));\n
+app.set('views', join(__dirname, '../app/public/views/'));\n
+app.use(require(join(__dirname, '../app/routes/index')));\n
 module.exports = app;`;
 
 const routesJs = 
-`module.exports = application => {\n
-    application.get('/', (req, res) => 
-        application.app.controllers.index.index(req, res, application));\n
-};`;
+`const app = require('express').Router();
+const { join } = require('path');\n
+app.get('/', (req, res) =>
+    require(join(__dirname, '../controllers/index')).index(req, res));\n
+module.exports = app;`;
 
 const controllersJs = 
 `module.exports = {\n
-    index: (req, res, app) => {
+    index: (req, res) => {
         res.send('Hello, World!');
     }\n
 }`;
 
 const packageJson =
 `{
-    "name": "${vscode.workspace.rootPath.split(path.sep).filter(s=>s.trim()).pop().replace(/ /g, '-')}",
+    "name": "${vscode.workspace.rootPath.split(path.sep).filter(s=>s.trim()).pop().replace(/ /g, '-').toLowerCase()}",
     "version": "1.0.0",
     "description": "",
     "main": "app.js",
@@ -81,7 +81,7 @@ const activate = (context) => {
         fs.appendFileSync(path.join(actualDir, 'app', 'controllers', 'index.js'), controllersJs);
         fs.appendFileSync(path.join(actualDir, 'package.json'), packageJson);
         
-        spawnProcess('npm', ['install express consign', 'start']);
+        spawnProcess('npm', ['install express', 'start']);
 
         window.showInformationMessage("MVC Pattern Ready!");
         vscode.commands.executeCommand("Reload Window");
